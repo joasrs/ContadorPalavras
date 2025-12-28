@@ -1,0 +1,45 @@
+
+body {
+    background-color: #180519;
+    color: #adff2f;
+        font-family: 'Consolas', 'Lucida Console', 'Monaco', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main {
+    margin: auto;
+    display: grid;
+    gap: 10px;
+}
+
+#text-input {
+    background-color: #092e2e;
+    border-color: #092e2e;
+    color: #adff2f;
+    font-family: 'Consolas', 'Lucida Console', 'Monaco', monospace;
+    display: flex;
+}
+
+#log {
+    background-color: #000000;
+    border-color: #000000;
+    color: #cccccc;
+    font-family: 'Consolas', 'Lucida Console', 'Monaco', monospace;
+}
+
+.text {
+    width: 800px;
+    height: 150px;
+    resize: none;
+    border: none;   
+    outline: none;
+    padding: 10px;
+}
+
+input {
+    background-color: #092e2e;
+    border-color: #092e2e;
+    color: #adff2f;
+}

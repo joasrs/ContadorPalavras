@@ -1,63 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contar palavras</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contar palavras</title>
-    <style>
-        #txtPalavras {
-            width: 500px;
-            height: 500px;
-        }
-
-        .botao {
-            width: 500px;
-        }
-    </style>
-</head>
-
-<body>
-    <textarea id="txtPalavras"></textarea>
-    <p><input type="checkbox" id="chkConsiderarUnicasLetras"><label for="chkConsiderarUnicasLetras">Considerar uma letra só como palavra</label></p>
-    <p><input type="button" class="botao" id="btnContar" value="Contar"></p>
-    <p><span id="txtResultadoPalavras"></span></p>
-    <p><span id="txtResultadoLetras"></span></p>
-    <script>
-        document.querySelector("#btnContar").addEventListener("click", IniciarContagem);
-        let txtPalavras = document.querySelector("#txtPalavras");
-        let txtResultadoPalavras = document.querySelector("#txtResultadoPalavras");
-        let txtResultadoLetras = document.querySelector("#txtResultadoLetras");
-        let chkConsiderarUnicasLetras = document.querySelector("#chkConsiderarUnicasLetras");
-         txtPalavras.addEventListener('keydown', IniciarContagem);
-
-        function IniciarContagem() {
-            ContarPalavras();
-        }
-
-        function ContarPalavras() {
-            let arrPalavras = txtPalavras.value.split(" ");
-            let iTamanhoMinimoPalavra = chkConsiderarUnicasLetras.checked ? 0 : 1;
-            let iContadorPalavras = 0;
-            let iContadorLetras = 0;
-
-            arrPalavras.forEach(e => {
-                let iTamanhoPalavra = e.trim().length;
-
-                if( iTamanhoPalavra > 0 ){
-                    iContadorLetras += iTamanhoPalavra;
-                }
-
-                if (iTamanhoPalavra > iTamanhoMinimoPalavra) {
-                    iContadorPalavras++;
-                }
-            });
-
-            txtResultadoPalavras.innerHTML = `Qtd. palavras encontradas: ${iContadorPalavras}`;
-            txtResultadoLetras.innerHTML = `Qtd. letras encontradas: ${iContadorLetras}`;
-        }
-    </script>
-</body>
-
+    <body>
+        <div id="main">
+            <h1>Contador de palavras</h1>
+            <div>
+                <textarea class="text" id="text-input" placeholder="Digite ou cole um texto..."></textarea>
+                <textarea class="text" id="log" placeholder="> resultado aparecerá aqui." disabled></textarea>
+            </div>
+            <div class="input-field">
+                <input type="number" id="qtdLetrasPalavra" value="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                <label>Numero de letras para ser considerado uma palavra</label>
+            </div>  
+            <div class="input-field">
+                <input type="checkbox" id="chkConsiderarEspaco" checked>
+                <label for="chkConsiderarEspaco">Considerar espaços em branco</label>
+            </div>
+        </div>
+    </body>
 </html>
